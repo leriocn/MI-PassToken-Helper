@@ -41,9 +41,6 @@
     *   点击左上角的“**加载已解压的扩展程序**”按钮。
     *   在弹出的文件选择窗口中，选择您在第2步中**解压好的整个文件夹** (`migpt-helper` 或 `migpt-browser-extension-main`)。
 
-    ![加载已解压的扩展程序](../assets/2025/10/load-unpacked-extension.png)
-    *(提示: 请您截图后，将图片放在 `../assets/2025/10/load-unpacked-extension.png` 路径下，或修改此处的路径)*
-
 4.  **完成！**
     *   您现在应该可以在浏览器的扩展程序列表中看到“小米 passToken 获取助手”了。建议点击它旁边的**图钉图标**，将其固定在工具栏上以便快速访问。
 
