@@ -18,8 +18,6 @@ A simple, secure, and open-source browser extension designed to help users quick
     *   **Minimum Permissions**: Only requests the minimum necessary permissions for `cookies` and `tabs` on the `xiaomi.com` domain.
     *   **Purely Local**: All credential fetching and processing happens locally within your browser. No data is sent to any third-party servers.
 
-![Extension Usage Screenshot](screenshots/popup-usage.png) 
-*(Hint: Please take a screenshot, create a `screenshots` folder in the project root, and name the image `popup-usage.png`)*
 
 ## 🚀 Installation Guide
 
