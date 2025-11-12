@@ -1,0 +1,173 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 320px;
+      font-family: sans-serif;
+      font-size: 14px;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .header h3 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .status {
+      padding: 0.75rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .status.error {
+      background-color: #fef2f2;
+      color: #991b1b;
+    }
+
+    .status.success {
+      background-color: #ecfdf5;
+      color: #065f46;
+    }
+
+    .result-item {
+      margin-bottom: 0.75rem;
+    }
+
+    .result-item label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .result-item div {
+      display: flex;
+    }
+
+    .result-item input {
+      flex-grow: 1;
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .result-item button {
+      width: auto;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      background: #f0f0f0;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button.primary {
+      background-color: #007aff;
+      color: white;
+      border-color: #007aff;
+    }
+
+    button.secondary {
+      background-color: #e5e7eb;
+      color: #1f2937;
+    }
+
+    .status {
+      /* ... */
+      text-align: left;
+    }
+
+    /* 改为左对齐以适应多行文本 */
+    .status code {
+      /* 新增 */
+      background-color: #e5e7eb;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .footer-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h3>小米 passToken 助手</h3>
+  </div>
+  <div id="status-area"></div>
+  <div id="result-area" style="display: none;">
+    <div class="result-item">
+      <label>小米数字 ID (userId)</label>
+      <div><input type="text" id="userId" readonly /><button id="copyUserId">复制</button></div>
+    </div>
+    <div class="result-item">
+      <label>passToken</label>
+      <div><input type="text" id="passToken" readonly /><button id="copyPassToken">复制</button></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button id="main-action-btn" class="primary"></button>
+    <button id="generateJsonBtn" class="secondary" style="display: none;">生成 .mi.json 文件</button>
+  </div>
+  <footer class="footer">
+    <div class="footer-title">相关链接</div>
+    <div class="footer-links">
+      <a href="https://cyber.lerio.cn" target="_blank">博客</a>
+      <a href="https://v.douyin.com/UOaKk_3iO6E/" target="_blank">抖音</a>
+      <a href="https://migpt.lerio.cn" target="_blank">AI接入平台</a>
+    </div>
+  </footer>
+  <script src="utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+
+</html>
