@@ -46,22 +46,36 @@ async function checkLoginStatus() {
 
 mainActionBtn.addEventListener('click', async () => {
   const [currentTab] = await browser.tabs.query({ active: true, currentWindow: true });
-  if (currentTab && currentTab.url.startsWith(XIAOMI_URL)) {
+  if (currentTab && currentTab.url && currentTab.url.startsWith(XIAOMI_URL)) {
     checkLoginStatus();
   } else {
     browser.tabs.create({ url: XIAOMI_URL, active: true });
   }
 });
 
-copyUserIdBtn.addEventListener('click', () => { /* ... (保持不变) ... */ });
-copyPassTokenBtn.addEventListener('click', () => { /* ... (保持不变) ... */ });
+copyUserIdBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(userIdInput.value).then(() => {
+    copyUserIdBtn.textContent = '已复制';
+    setTimeout(() => { copyUserIdBtn.textContent = '复制'; }, 1500);
+  });
+});
+copyPassTokenBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(passTokenInput.value).then(() => {
+    copyPassTokenBtn.textContent = '已复制';
+    setTimeout(() => { copyPassTokenBtn.textContent = '复制'; }, 1500);
+  });
+});
 
 // --- 【核心修正】 START: 优化下载流程 ---
 generateJsonBtn.addEventListener('click', () => {
     const passToken = passTokenInput.value;
-    if (!passToken) { /* ... */ return; }
+    const userId = userIdInput.value;
+    if (!passToken) {
+        showStatus('请先获取 passToken 再导出。', 'error');
+        return;
+    }
 
-    const jsonContent = { /* ... */ };
+    const jsonContent = { userId: userId, passToken: passToken };
     const blob = new Blob([JSON.stringify(jsonContent, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     
@@ -87,7 +101,7 @@ generateJsonBtn.addEventListener('click', () => {
         showStatus('文件已开始下载！<br><strong>重要：</strong>请手动将 <code>mi.json</code> 重命名为 <code>.mi.json</code>。', 'success');
     });
 });
-// --- 【核心修正】 END --
+
 
 document.addEventListener('DOMContentLoaded', checkLoginStatus);
 
